@@ -1,0 +1,48 @@
+page,
+.page, {
+  height: 100%;
+  overflow-y:auto;
+}
+
+.topinfo {
+  background: #FFEDBA;
+  border: 1px solid #FDCE95;
+  height: 34px;
+  font-size: 12px;
+  line-height: 17px;
+  color: rgba(92,76,69,0.90);
+  letter-spacing: 0;
+  padding:5px 10px 5px 10px;
+}
+
+
+.top1 {
+  font-size: 30rpx;
+  color: #888888;
+  letter-spacing: 0;
+  line-height: 45rpx;
+  padding:20rpx 40rpx 20rpx 40rpx;
+}
+.order-item {
+  padding:10rpx 0 10rpx 0;
+}
+.order-item .item-center {
+  padding:20rpx 34rpx 20rpx 34rpx;
+}
+.order-item .item {
+  font-size:24rpx;
+  line-height: 40rpx;
+  height: 40rpx;
+}
+.footer {
+  text-align: right;
+}
+.footer van-button {
+  margin-left:20rpx;
+}
+.empty {
+  font-size: 30rpx;
+  line-height: 60rpx;
+  text-align: center;
+  padding-top:40rpx;
+}

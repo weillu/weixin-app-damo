@@ -1,0 +1,23 @@
+.top {
+  text-align: center;
+  height:170rpx;
+  padding-top:30rpx;
+}
+.ok {
+  text-align: center;
+  font-size: 32rpx;
+  color: rgba(76,76,76,0.90);
+  line-height: 60rpx;
+  height: 60rpx;
+}
+.fee {
+  text-align: center;
+  font-size: 32rpx;
+  color: rgba(168,168,168,0.90);
+  line-height: 40rpx;
+  height: 100rpx;
+}
+.color {
+  background: #FF931C;
+  color:white;
+}

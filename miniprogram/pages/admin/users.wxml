@@ -1,0 +1,58 @@
+<wxs src="../../utils/dm.wxs" module="dm" />
+<wxs src="./gn.wxs" module="gn" />
+<van-tabbar active="admin" bind:change="navbtn">
+  <van-tabbar-item name="admin/index" icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item name="admin/orders" wx:if="{{admin.orders}}" icon="friends-o">订单管理</van-tabbar-item>
+  <van-tabbar-item name="admin/fund" wx:if="{{admin.fund}}"  icon="search">充值管理</van-tabbar-item>
+  <van-tabbar-item name="admin/store" wx:if="{{admin.store}}" icon="friends-o">门店管理</van-tabbar-item>
+</van-tabbar>
+
+<van-search
+  value="{{ Svalue }}"
+  placeholder="请输入名字或电话"
+  bind:change="onChangeSearch"
+  bind:search="onSearch"
+  bind:cancel="onCancel"
+/>
+
+
+<view wx:for="{{version}}" wx:if="{{admin.users}}" wx:key="{{item}}" class="version-item">
+  <van-cell title="{{item.nickName+',电话：'+item.phoneNumber}}" data-gender="{{item.gender}}"  data-avatarUrl="{{item.avatarUrl}}" data-phoneNumber="{{item.phoneNumber}}" data-nickName="{{item.nickName}}"  data-damo_cash="{{item.damo_cash}}" data-mysharecode="{{item.mysharecode}}" data-recommender="{{item.recommender}}" data-province="{{item.province}}" data-city="{{item.city}}" data-language="{{item.language}}" is-link bind:click="showPopup" />
+</view>
+
+<van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 100%"
+  bind:close="onClose">
+  <view class="pop_title">
+    {{ tempdata.nickname }}  用户信息
+  </view>
+<van-cell-group>
+  <view class="itemline">
+    <view class="line-left">头像</view>
+    <view class="line-right">
+      <image src="{{tempdata.avatarurl}}"></image>
+    </view>
+  </view>
+  <van-cell title="姓名" value="{{tempdata.nickname}}" />
+  <van-cell title="电话" value="{{tempdata.phonenumber}}" />
+  <van-cell title="性别" value="{{gn.transform(tempdata.gender)}}" />
+  <van-cell title="充值金额：{{tempdata.damo_cash/100+'元'}}"  is-link value="查询" bindtap="topay" />
+  <van-cell title="分享码" value="{{tempdata.mysharecode}}" />
+  <van-cell title="推荐人code" value="{{tempdata.recommender}}" />
+  <van-cell title="省份" value="{{tempdata.province}}" />
+  <van-cell title="城市" value="{{tempdata.city}}" />
+  <van-cell title="手机使用语言" value="{{tempdata.language}}" />
+
+
+</van-cell-group>
+
+
+<view class="pop_btn">
+    <van-button type="default" bind:click="onClose">返回</van-button>
+</view>
+
+</van-popup>
+

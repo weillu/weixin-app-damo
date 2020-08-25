@@ -1,0 +1,35 @@
+.pop_title {
+  padding:100rpx 0 20rpx 32rpx;
+  font-size:36rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+}
+.pop_btn1 {
+  padding:20rpx 0 20rpx 0rpx;
+}
+.right20 {
+  margin-right:20rpx;
+}
+.itemline {
+  position:relative;
+  color: #323233;
+  font-size:28rpx;
+  line-height: 48rpx;
+  border-bottom:1px solid #ebedf0;
+  padding:20rpx 32rpx 20rpx 32rpx;
+}
+.itemline .line-left {
+  display: inline-block;
+  width: 180rpx;
+  height: 48rpx;
+  float: left;
+}
+.itemline .line-right {
+  display: inline-block;
+  width: 40%;
+  height: 48rpx;
+}
+.itemline .line-right image{
+  width: 180rpx;
+  height: 180rpx;
+}

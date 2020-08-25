@@ -1,0 +1,93 @@
+<wxs src="../../utils/dm.wxs" module="dm" />
+<van-tabbar active="admin" bind:change="navbtn">
+  <van-tabbar-item name="admin/index" icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item name="admin/orders" wx:if="{{admin.orders}}" icon="friends-o">订单管理</van-tabbar-item>
+  <van-tabbar-item name="admin/fund" wx:if="{{admin.fund}}"  icon="search">充值管理</van-tabbar-item>
+  <van-tabbar-item name="admin/store" wx:if="{{admin.store}}" icon="friends-o">门店管理</van-tabbar-item>
+</van-tabbar>
+
+<van-search
+  value="{{ Svalue }}"
+  placeholder="请输入版本号"
+  bind:change="onChangeSearch"
+  bind:search="onSearch"
+  bind:cancel="onCancel"
+/>
+
+<view class="version-item">
+  <van-cell title="添加版本"  data-title="达摩减压健康咨询" data-tname="咨询" data-shareimg="cloud://damo-j1p3t.6461-damo-j1p3t-1300768115/share/share.png"  data-deposit="{{false}}" data-version="" is-link bind:click="showPopup"  />
+</view>
+
+<view wx:for="{{vresion}}" wx:key="{{item}}" class="version-item">
+  <van-cell title="{{item.version}}" data-id="{{item._id}}"  data-shareimg="{{item.shareimg}}" data-title="{{item.title}}" data-tname="{{item.tname}}"  data-deposit="{{item.deposit}}" data-version="{{item.version}}" is-link bind:click="showPopup" />
+</view>
+
+<van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 100%"
+  bind:close="onClose">
+  <view class="pop_title">
+    修改{{ editverson.version }}信息
+  </view>
+<van-cell-group>
+  <van-field
+    value="{{ editverson.version }}"
+    clearable
+    label="版本号"
+    placeholder="请输入版本号"
+    bind:change="onChangeVersion"
+  />
+  <van-field
+    value="{{ editverson.title }}"
+    clearable
+    label="分享标题"
+    placeholder="请输入分享标题"
+    bind:change="onChangeTitle"
+  />
+  <van-field
+    value="{{ editverson.tname }}"
+    clearable
+    label="师傅名称"
+    placeholder="请输入师傅名称"
+    bind:change="onChangeTname"
+  />
+  <view class="itemline">
+    <view class="line-left">充值</view>
+    <view class="line-right">
+      <van-switch checked="{{ editverson.deposit }}" size="24px" bind:change="onChangeDm"  />
+    </view>
+  </view>
+
+  <view class="itemline">
+    <view class="line-left">分享图片</view>
+    <view class="line-right">
+      <van-uploader
+      name="image"
+      file-list="{{ images }}"
+      max-count="1"
+      multiple="true"
+      capture="['album', 'camera']"
+      bind:after-read="afterRead"
+      bind:delete="delImg"
+    />
+    </view>
+  </view>
+
+  <!-- <van-field
+    value="{{ editverson.shareimg }}"
+    required
+    clearable
+    label="分享图片"
+    placeholder="请输入用户名"
+    bind:click-icon="onClickIcon"
+  /> -->
+
+</van-cell-group>
+<view class="pop_btn">
+    <van-button type="primary" bind:click="saveVersion" class="right20">保存</van-button>
+    <van-button type="default" bind:click="onClose">取消</van-button>
+</view>
+
+</van-popup>

@@ -1,0 +1,73 @@
+<wxs module="dateUtil" src="../../utils/dateTime.wxs"></wxs>
+
+<wxs src="./status.wxs" module="status" />
+
+
+<van-tabbar active="on" bind:change="navbtn">
+  <van-tabbar-item name="subscribe/subscribe">预约</van-tabbar-item>
+  <van-tabbar-item name="share/index">分享</van-tabbar-item>
+  <van-tabbar-item name="my/my" >我的</van-tabbar-item>
+</van-tabbar>
+
+<view class="page">
+
+
+
+
+
+<view wx:for="{{historyorders}}" wx:key="{{item}}" class="order-item">
+<view class="top">
+  <view class="top_l">服务项目:{{tname}}</view>
+  <view class="top_r {{item.status==1?'r0':'r1'}}" >{{status.transform(item.status)}}</view>
+</view>
+<view class="item-center" data-order="{{item.out_trade_no}}" data-index="{{index}}" bindtap="queryorder">
+          <view class="item">
+            <text>位置： </text>
+            <text class="">{{item.work[0].one+1}}</text>
+          </view>
+          <view class="item1">
+            <text>{{tname}}师：</text>
+            <text class="text">{{item.work[0].name}}</text>
+          </view>
+          <view class="item2">
+            <text>预约时间：</text>
+            <text class="text">{{dateUtil.dateFormat(item.starttime,'YYYY-MM-dd hh:mm')}}--{{item.work[item.work.length-1].timeend}}</text>
+          </view>
+        </view>
+
+</view>
+
+
+     
+  <view 
+      class="empty"
+      wx:if="{{!historyorders.length}}"
+    >
+    暂无订单
+  </view>
+</view>
+
+
+<van-dialog
+  use-slot
+  title="重要"
+  show="{{ show }}"
+  show-cancel-button
+  confirm-button-open-type="getUserInfo"
+  bind:close="onClose"
+  bind:getuserinfo="pushorder"
+>
+  <view class="top1">
+  <view class="top2">
+  订单在服务开始的2小时前可免费取消；
+  </view>
+  <view class="top3">
+  在2小时之内不可取消且不能退款，如有一个订单包含多个服务，以第一个服务的开始时间进行计算
+  </view>
+</view>
+</van-dialog>
+
+
+
+
+

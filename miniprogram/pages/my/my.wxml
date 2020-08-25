@@ -1,0 +1,105 @@
+<van-tabbar active="my/my" bind:change="navbtn">
+  <van-tabbar-item name="subscribe/subscribe">预约</van-tabbar-item>
+  <van-tabbar-item name="share/index">分享</van-tabbar-item>
+  <van-tabbar-item name="my/my" >我的</van-tabbar-item>
+</van-tabbar>
+
+
+
+<view class="page">
+<view class="container">
+        
+
+<view class="main" wx:if="{{isAuthorized && userInfo.phoneNumber && userInfo.nickName}}">
+  <view class="top">
+   <view class="top_t">
+    <view class="top_l">
+      <image src="{{userInfo.avatarUrl}}"></image>
+    </view>
+    <view class="top_r">
+        <view class="top_r_t">{{userInfo.nickName}}</view>
+        <view class="top_r_b">{{userInfo.phoneNumber}}</view>
+    </view>
+   </view>
+   <view class="top_b" wx:if="{{deposit}}">
+        <view class="topb_btxt">账户余额:{{dm.transform(userInfo.damo_cash)}}</view>
+        <view class="top_btn" bindtap="topay">充值</view>
+   </view>           
+  </view>                                                       
+<van-cell
+icon="/images/icon1.png"
+  is-link
+  title="我的预约"
+  link-type="navigateTo"
+  url="/pages/pay-order/index"
+/>                     
+<van-cell
+icon="/images/icon2.png"
+  is-link
+  title="历史消费记录"
+  link-type="navigateTo"
+  url="/pages/horder/index"
+/>
+<van-cell
+icon="/images/icon4.png"
+  is-link
+  title="券"
+  link-type="navigateTo"
+  url="/pages/coupon-list/index"
+/>
+
+<van-cell
+icon="/images/icon0.png"
+  wx:if="{{technician}}"
+  is-link
+  title="我是{{tname}}师"
+  link-type="navigateTo"
+  url="/pages/technician/index"
+/>
+<van-cell
+icon="/images/icon5.png"
+  wx:if="{{admin}}"
+  is-link
+  title="管理"
+  link-type="navigateTo"
+  url="/pages/admin/index"
+/>            
+
+        </view>
+        
+<view  wx:if="{{loadin}}">
+        
+        <button
+          wx:if="{{userInfo.isLoaded && isAuthorized && !userInfo.phoneNumber}}"
+          class="weui-btn"
+          type="primary"
+          open-type="getPhoneNumber"
+          bindgetphonenumber="bindGetPhoneNumber"
+        >
+          授权手机号
+        </button>
+        <button
+          wx:if="{{userInfo.isLoaded && !isAuthorized && !userInfo.nickName}}"
+          class="weui-btn"
+          type="primary"
+          open-type="getUserInfo"
+          bindgetuserinfo="bindGetUserInfoNew"
+        >
+          授权微信后登录
+        </button>
+        <!-- <button
+          wx:if="{{userInfo.nickName}}"
+          class="weui-btn"
+          type="warn"
+          bindtap="bindLogout"
+        >
+          退出登录
+        </button> -->
+    </view>
+
+</view>
+<wxs src="./index.wxs" module="index" />
+<wxs src="../../utils/dm.wxs" module="dm" />
+
+</view>
+ 

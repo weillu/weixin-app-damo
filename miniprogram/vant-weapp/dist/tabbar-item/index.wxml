@@ -1,0 +1,11 @@
+<wxs src="../wxs/utils.wxs" module="utils" />
+
+<view
+  class="{{ utils.bem('tabbar-item', { active }) }} custom-class"
+  style="color: {{ active ? activeColor : inactiveColor }}"
+  bind:tap="onClick"
+>
+  <view class="van-tabbar-item__text">
+    <slot />
+  </view>
+</view>

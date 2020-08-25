@@ -1,0 +1,9 @@
+{
+  "triggers": [
+    {
+      "name": "ordertriggers",
+      "type": "timer",
+      "config": "*/5 * * * * * *"
+    }
+  ]
+}

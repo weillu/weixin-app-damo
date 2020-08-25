@@ -1,0 +1,166 @@
+page {
+  background: #FFFFFF;
+}
+
+
+.buy-what{
+  width: 80%;
+  font-size: 30rpx;
+  padding:20rpx 10% 300rpx 10%;
+}
+
+
+.bunks {
+  width:50%;
+  height: 80rpx;
+  display: inline-block;
+
+}
+.bunks view {
+  width: 90%;
+  height: 70%;
+  margin:0 auto;
+  text-align: center;
+  position: relative;
+}
+.work_on {
+  position: relative;
+  background: #24834e;
+  color:#839D8E;
+  font-size: 30rpx;
+  line-height: 56rpx;
+  
+}
+.work_no {
+  position: relative;
+  background: #DFDFDF;
+  color:white;
+  font-size: 30rpx;
+  line-height: 56rpx;
+}
+.work_off {
+  background: #39CF80;
+  color:white;
+  font-size: 30rpx;
+  line-height: 56rpx;
+}
+
+.icon {
+  position: absolute;
+  left:50%;
+  top:50%;
+  width: 40rpx;
+  height: 40rpx;
+  margin-left:-20rpx;
+  margin-top:-20rpx;
+  border:2rpx solid #FFFFFF;
+  background: #FFFFFF;
+  border-radius: 100%;
+}
+.icon icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+
+.buy-what-head{font-size:26rpx;line-height: 40rpx;height: 20rpx;clear: both}
+.tleft{color: #222222;float:left;}
+.tright{color:#CC0707;float:right}
+.buy-what-body {
+  clear: both;
+}
+.buy-what-list {
+  width: 206rpx;
+  height: 60rpx;
+  font-size: 28rpx;
+  line-height: 60rpx;
+  color: #39CF80;
+  letter-spacing: 1.28rpx;
+  text-align: center;
+  background: #FFFFFF;
+  border: 2rpx solid #39CF80;
+  flex-direction:column;
+  display: flex;
+  float:left;
+  margin:10rpx 12rpx 10rpx 12rpx;
+}
+.buy-what-footer {
+clear: both;
+height: 2rpx;
+width:100%;
+}
+
+.te-main {
+  background: #F6F6F6;
+  border: 2rpx solid rgba(151,151,151,0.11);
+}
+.te-title {
+font-size: 32rpx;
+color: #222222;
+height: 80rpx;
+line-height: 80rpx;
+padding-left: 50rpx;
+}
+.te-center {
+  height: auto;
+  clear: both;
+}
+.work {
+  width: 25%;
+  height: 374rpx;
+  float:left;
+  position: relative;
+}
+.workte-info {
+  width: 100%;
+  text-align: center;
+}
+.workte-i {
+  width: 100%;
+  height: 176rpx;
+}
+.workte-i image {
+  width: 132rpx;
+  height: 176rpx;
+}
+.workte-n {
+  font-size: 24rpx;
+  color: #222222;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.workte-r {
+  font-size: 22rpx;
+  color: #222222;
+  height: 36rpx;
+  line-height: 36rpx;
+}
+.workte-w {
+  font-size: 22rpx;
+  color: #7C858A;
+  height: 36rpx;
+  line-height: 36rpx;
+}
+.workte-s {
+  font-size: 20rpx;
+  color: #7C858A;
+  height: 30rpx;
+  line-height: 30rpx;
+}
+.workte-e {
+  font-size: 20rpx;
+  color: #3D86EF;
+  height: 40rpx;
+  line-height: 40rpx;
+}
+.no-order {
+  text-align: center;
+  font-size: 40rpx;
+  color: #3D86EF;
+  line-height: 60rpx;
+}
+.work_no2 {
+  background: rgb(240, 106, 17);
+}
+.work_no6 {
+  background: #3D86EF;
+}

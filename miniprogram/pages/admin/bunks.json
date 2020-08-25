@@ -1,0 +1,22 @@
+{
+  "navigationBarTitleText": "床位管理",
+  "usingComponents": {
+    "van-cell": "/vant-weapp/dist/cell/index",
+    "van-cell-group": "/vant-weapp/dist/cell-group/index",
+    "van-image": "/vant-weapp/dist/image/index",
+    "van-tabbar": "/vant-weapp/dist/tabbar/index",
+    "van-tabbar-item": "/vant-weapp/dist/tabbar-item/index",
+    "van-popup": "/vant-weapp/dist/popup/index",
+    "van-field": "/vant-weapp/dist/field/index",
+    "van-search": "/vant-weapp/dist/search/index",
+    "van-toast": "/vant-weapp/dist/toast/index",
+    "van-switch": "/vant-weapp/dist/switch/index",
+    "van-uploader": "/vant-weapp/dist/uploader/index",
+    "van-button": "/vant-weapp/dist/button/index",
+    "van-radio": "/vant-weapp/dist/radio/index",
+    "van-radio-group": "/vant-weapp/dist/radio-group/index",
+    "van-stepper": "/vant-weapp/dist/stepper/index",
+    "van-swipe-cell": "/vant-weapp/dist/swipe-cell/index",
+    "van-dialog": "/vant-weapp/dist/dialog/index"
+  }
+}

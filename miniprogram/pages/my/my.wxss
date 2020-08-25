@@ -1,0 +1,94 @@
+.page {
+  padding: 10rpx 0;
+}
+.main {
+  width:100%;
+  margin: 0 auto;
+}
+.top {
+  background-image: linear-gradient(-180deg, #7AB4F8 0%, #4A90E2 100%);
+  padding:100rpx 62rpx 100rpx 62rpx
+}
+.top_t {
+  height: 114rpx;
+  clear: both;
+}
+.top_l {
+  width: 142rpx;
+  height: 114rpx;
+  float:left;
+}
+.top_l image {
+  width: 114rpx;
+  height: 114rpx;
+  border-radius: 100%;
+  overflow: hidden;
+}
+.top_r {
+  width: 400rpx;
+  height: 94rpx;
+  padding-top:20rpx;
+  float:left;
+}
+.top_r_t {
+  font-size: 36rpx;
+  color: #FFF;
+  line-height: 50rpx;
+}
+.top_r_b {
+  font-size: 24rpx;
+  color: #2B3857;
+  line-height: 50rpx;
+  opacity: 0.3;
+}
+.top_b {
+  padding-top:50rpx;
+  height: 156rpx;
+  color:#fff;
+  text-align: center;
+}
+.topb_btxt {
+  font-size: 42rpx;
+  line-height: 70rpx;
+}
+.top_btn {
+  width: 340rpx;
+  height: 78rpx;
+  font-size: 36rpx;
+  line-height: 78rpx;
+  border: 4rpx solid #FFFFFF;
+  border-radius: 214rpx;
+  margin: 20rpx auto;
+}
+.main .van-cell {
+  font-size:32rpx;
+  line-height: 50rpx;
+}
+.main .van-cell__left-icon-wrap{
+  font-size:32rpx;
+  line-height: 50rpx;
+  height: 50rpx;
+}
+.main .van-cell__left-icon-wrap .van-icon--image{
+  width: 40rpx;
+  height: 40rpx;
+  position: relative;
+  top:-4rpx;
+}
+.weui-btn-area {
+  background-image: linear-gradient(-180deg, #7AB4F8 0%, #4A90E2 100%);
+  padding:100rpx 0 100rpx 0;
+  text-align: center;
+  width: 100%;
+  color: #FFFFFF;
+}
+.weui-btn {
+  width: 680rpx;
+  height: 92rpx;
+  margin: 20rpx auto;
+  border-radius: 60rpx;
+  color: #fff;
+  font-size: 18px;
+  line-height: 92rpx;
+  background-color:#4e92df;
+}

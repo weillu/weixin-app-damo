@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/subscribe/subscribe",
+    "pages/admin/addt",
+    "pages/deposit/index",
+    "pages/share/index",
+    "pages/my/my",
+    "pages/pay-order/index",
+    "pages/pay-result/index",
+    "pages/comment/comment",
+    "pages/tInfo/tInfo",
+    "pages/horder/index",
+    "pages/store/store",
+    "pages/pay-coupons/index",
+    "pages/coupon-list/index",
+    "pages/pay-result/payok",
+    "pages/store/addstore",
+    "pages/store/editstore",
+    "pages/technician/index",
+    "pages/technician/rest",
+    "pages/technician/orders",
+    "pages/technician/work",
+    "pages/admin/store",
+    "pages/admin/index",
+    "pages/admin/fund",
+    "pages/admin/users",
+    "pages/admin/version",
+    "pages/admin/technicians",
+    "pages/admin/bunks",
+    "pages/admin/storet",
+    "pages/admin/orderList",
+    "pages/horder/order-result",
+    "pages/admin/orders",
+    "pages/admin/fundlist"
+  ],
+  "window": {
+    "backgroundColor": "#FFFFFF",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFFFFF",
+    "navigationBarTitleText": "达摩减压",
+    "navigationBarTextStyle": "black"
+  },
+  "networkTimeout": {
+    "request": 10000,
+    "downloadFile": 10000
+  },
+  "usingComponents": {
+    "van-button": "/vant-weapp/dist/button/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}

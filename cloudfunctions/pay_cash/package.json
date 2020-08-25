@@ -1,0 +1,19 @@
+{
+  "name": "pay_cash",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "create-hash": "^1.2.0",
+    "q": "^1.5.1",
+    "ip": "^1.1.5",
+    "request": "^2.88.0",
+    "wx-server-sdk": "latest",
+    "xml2js": "^0.4.19"
+  }
+}

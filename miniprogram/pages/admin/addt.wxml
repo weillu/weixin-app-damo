@@ -1,0 +1,150 @@
+<wxs src="../../utils/dm.wxs" module="dm" />
+<van-tabbar active="admin/store" bind:change="navbtn">
+  <van-tabbar-item name="admin/index" icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item name="admin/orders" wx:if="{{admin.orders}}" icon="friends-o">订单管理</van-tabbar-item>
+  <van-tabbar-item name="admin/fund" wx:if="{{admin.fund}}"  icon="search">充值管理</van-tabbar-item>
+  <van-tabbar-item name="admin/store" wx:if="{{admin.store}}" icon="friends-o">门店管理</van-tabbar-item>
+</van-tabbar>
+
+<van-search
+  value="{{ Svalue }}"
+  placeholder="请输入姓名或电话"
+  bind:change="onChangeSearch"
+  bind:search="onSearch"
+  bind:cancel="onCancel"
+/>
+
+
+<view wx:for="{{ndata}}" wx:if="{{admin.technician}}" wx:key="{{item}}" class="version-item">
+  <van-cell title="{{item.nickName +',电话：'+ item.phoneNumber}}" data-phone="{{item.phoneNumber}}" data-openid="{{item._openid}}" data-name="{{item.nickName}}"  data-avatarurl="{{item.avatarUrl}}" data-gender="{{item.gender}}"  is-link bind:click="showPopup" />
+</view>
+
+<van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 100%"
+  bind:close="onClose">
+  <view class="pop_title">
+    添加{{ editdata.name }}信息
+  </view>
+<van-cell-group>
+  <view class="itemline">
+    <view class="line-left">头像</view>
+    <view class="line-right">
+      <image class="avatarurl" src="{{editdata.avatarurl}}"></image>
+    </view>
+  </view>
+  <van-field
+    value="{{ editdata.name }}"
+    clearable
+    label="姓名"
+    placeholder="请输入姓名"
+    bind:change="onChange1"
+  />
+  <van-field
+    value="{{ editdata.phone }}"
+    clearable
+    label="联系电话"
+    placeholder="请输入联系电话"
+    bind:change="onChange2"
+  />
+  <view class="itemline">
+    <view class="line-left">性别</view>
+    <view class="line-right">
+      <van-radio-group value="{{ editdata.gender }}" bind:change="onChange12">
+        <van-radio name="1" class="radioleft">男</van-radio>
+        <van-radio name="2" class="radioleft">女</van-radio>
+      </van-radio-group>
+    </view>
+  </view>
+
+
+ <view class="itemline">
+    <view class="line-left">价格系数</view>
+    <view class="line-right">
+      <van-stepper value="{{ editdata.ratio }}" step="0.1" min="0.5" max="2" bind:change="onChange3" />
+    </view>
+  </view>
+<view class="itemline">
+    <view class="line-left">级别</view>
+    <view class="line-right">
+      <van-stepper value="{{ editdata.average }}" step="1" min="0" max="6"bind:change="onChange4" />
+    </view>
+  </view>
+
+  <van-field
+    value="{{ editdata.damo_cash/100 +'元' }}"
+    wx:if="{{!admin.damo_cash}}"
+    label="绩效"
+    disabled
+  />
+
+<view class="itemline" x:if="{{admin.damo_cash}}">
+    <view class="line-left">绩效(分)</view>
+    <view class="line-right">
+      <van-stepper value="{{ editdata.damo_cash }}" step="1" min="0" bind:change="onChange13" />
+    </view>
+  </view>
+   <view class="itemline" >
+    <view class="line-left">评星</view>
+    <view class="line-right">
+      <van-stepper value="{{ editdata.score }}" step="1" min="0" max="6" bind:change="onChange5" />
+    </view>
+  </view>
+  <view class="itemline" >
+    <view class="line-left">工作时长</view>
+    <view class="line-right">
+      <van-stepper value="{{ editdata.working }}" step="1" min="0" max="40" bind:change="onChange10" />
+    </view>
+  </view>
+  <van-field
+    value="{{ editdata.speciality }}"
+    clearable
+    label="擅长"
+    placeholder="请输入擅长"
+    bind:change="onChange6"
+  />
+  <van-field
+    value="{{ editdata.bankname }}"
+    clearable
+    label="银行名称"
+    placeholder="请输入银行名称"
+    bind:change="onChange7"
+  />
+  <van-field
+    value="{{ editdata.bankcard }}"
+    clearable
+    label="银行卡号"
+    placeholder="请输入银行卡号"
+    bind:change="onChange8"
+  />
+  <van-field
+    value="{{ editdata.address }}"
+    clearable
+    label="地址"
+    placeholder="请输入地址"
+    bind:change="onChange9"
+  />
+  <view class="itemline">
+    <view class="line-left">轮播图片</view>
+    <view class="line-right">
+      <van-uploader
+      name="image"
+      file-list="{{ images }}"
+      max-count="9"
+      multiple="true"
+      capture="['album', 'camera']"
+      bind:after-read="afterRead"
+      bind:delete="delImg"
+    />
+    </view>
+  </view>
+
+</van-cell-group>
+<view class="pop_btn">
+    <van-button type="primary" bind:click="saveinfo" class="right20">保存</van-button>
+    <van-button type="default" bind:click="onClose">取消</van-button>
+</view>
+
+</van-popup>

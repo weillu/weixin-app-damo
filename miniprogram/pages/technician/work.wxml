@@ -1,0 +1,32 @@
+<van-tabbar active="technician/work" bind:change="navbtn">
+  <van-tabbar-item name="technician/index" icon="home-o">订单</van-tabbar-item>
+  <van-tabbar-item name="technician/work" icon="search">上班</van-tabbar-item>
+  <van-tabbar-item name="technician/rest" icon="friends-o">休息</van-tabbar-item>
+</van-tabbar>
+
+
+<view class="shop">
+<view class="shop_info">
+  <view class="shop_info_left">
+    <view class="name">{{store.name}}</view>
+    <view class="address"><van-icon name="location-o" />{{store.address}}</view>
+    <view class="owner">营业时间:{{store.owner}}</view>
+  </view>
+    <view class="phone" bindtap="tel"><van-icon class="tel_icon" name="phone" style="font-size:37rpx;color:#DD5900" /><span>电话</span></view>
+</view>
+</view>
+<view class="title">第{{bunk}}位</view>
+<view>
+<view wx:for="{{workday}}" wx:key="index" class="bunks">
+  <view bindtap="onday" data-date="{{item.val}}"  class="work_{{item.val==ondate?'on':'off'}}">
+  {{item.name}}
+  <span wx:if="{{item.val==ondate}}" class="icon"><icon type="success" color="orange" /></span>
+  </view>
+</view>
+</view>
+
+<view>---------------------------</view>
+
+
+
+<van-button type="primary" size="large" bindtap="allwork">上班提交</van-button>

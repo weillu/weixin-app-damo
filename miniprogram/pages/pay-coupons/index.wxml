@@ -1,0 +1,18 @@
+<view class="topinfo">使用说明：每张券只能对一个时间单位（30分钟）的服务进行打折，且不可叠加打折</view>
+
+<view wx:for="{{coupons}}" wx:key="index" class="coupons">
+        <view wx:if="{{item.type==0}}" data-index="{{index}}" data-id="{{item._id}}" data-type="{{item.type}}" data-name="{{item.name}}" data-total_fee="{{item.total_fee}}" class="coupon_list coupon_{{item.on==1?'on':'off'}}" data-type="{{item.type}}" bindtap="useCoupon">
+        <span class="name">{{item.name}}</span>
+        <span class="coupon_name">达摩新式减压按摩</span>
+        <span class="sdate">有效期：{{item.sdate}}至{{item.edate}}</span>
+        <span class="content">{{item.content}}</span>
+        </view>
+    </view>
+
+<van-submit-bar
+  label="{{'已选中折扣卷'+ ucoupons.length+'张'}}"
+  price="{{ actual_payment }}"
+  button-text="使用"
+  wx:if="{{show}}"
+  bind:submit="goto"
+/>

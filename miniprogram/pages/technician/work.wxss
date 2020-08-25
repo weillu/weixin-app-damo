@@ -1,0 +1,104 @@
+.shop_info {
+  background: #FF931C;
+  height: 200rpx;
+  padding:0 16rpx 0 34rpx;
+  color:#FFFFFF;
+}
+.shop_info_left {
+  display:block;
+  position: relative;
+  -webkit-flex:1;
+  flex:1;
+  box-sizing:border-box;
+  text-overflow:ellipsis;
+  width: 400rpx;
+  font-size: 28rpx;
+  float: left;
+}
+.phone {
+  width: 274rpx;
+  height: 86rpx;
+  background: #F9F9F9;
+  border-radius: 100rpx;
+  float:right;
+  letter-spacing: 0.82px;
+  text-align: center;
+  line-height: 86rpx;
+  position: relative;
+  top:60rpx;
+}
+.phone .tel_icon {
+  font-size: 40rpx;
+  color: #DD5900;
+  line-height: 86rpx;
+  position: relative;
+  top:10rpx;
+}
+.phone span {
+  display:inline-block;
+  position: relative;
+  line-height: 86rpx;
+  font-size: 36rpx;
+  color: #DD5900;
+}
+.name {
+  font-family: PingFangSC-Regular;
+  font-size: 40rpx;
+  color: #FFFFFF;
+  line-height: 100rpx;
+}
+.bunks {
+  width:50%;
+  height: 80rpx;
+  display: inline-block;
+
+}
+.bunks view {
+  width: 90%;
+  height: 70%;
+  margin:0 auto;
+  text-align: center;
+  position: relative;
+}
+.work_on {
+  position: relative;
+  background: #24834e;
+  color:#839D8E;
+  font-size: 30rpx;
+  line-height: 56rpx;
+  
+}
+.work_no {
+  position: relative;
+  background: #DFDFDF;
+  color:white;
+  font-size: 30rpx;
+  line-height: 56rpx;
+}
+.work_off {
+  background: #39CF80;
+  color:white;
+  font-size: 30rpx;
+  line-height: 56rpx;
+}
+
+.icon {
+  position: absolute;
+  left:50%;
+  top:50%;
+  width: 40rpx;
+  height: 40rpx;
+  margin-left:-20rpx;
+  margin-top:-16rpx;
+  border-radius: 100%;
+}
+.icon icon {
+  width: 40rpx;
+  height: 40rpx;
+}
+.title {
+  height: 70rpx;
+  line-height: 60rpx;
+  font-size: 30rpx;
+  text-align: center;
+}

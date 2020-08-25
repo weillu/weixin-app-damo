@@ -1,0 +1,125 @@
+<van-tabbar active="subscribe/subscribe" bind:change="navbtn">
+  <van-tabbar-item name="subscribe/subscribe">预约</van-tabbar-item>
+  <van-tabbar-item name="share/index">分享</van-tabbar-item>
+  <van-tabbar-item name="my/my" >我的</van-tabbar-item>
+</van-tabbar>
+
+<view class="shop">
+<view class="page-section page-section-spacing swiper" wx:if="{{deposit}}">
+      <swiper indicator-dots="true"
+        autoplay="true" interval="2000" duration="500">
+        <block wx:for="{{store.images}}" wx:key="*this" wx:for-item="sitem"  >
+          <swiper-item>
+            <view class="swiper-item "> <image class="img" src="{{sitem.url}}"></image></view>
+          </swiper-item>
+        </block>
+      </swiper>
+</view>
+<view class="shop_info">
+  <view class="shop_info_left">
+    <view class="name">{{store.name}}</view>
+    <view class="address"><van-icon name="location-o" />{{store.address}}</view>
+    <view class="owner">营业时间:{{store.owner}}</view>
+  </view>
+    <view class="phone" bindtap="tel"><van-icon class="tel_icon" name="phone" style="font-size:37rpx;color:#DD5900" /> <span>电话</span></view>
+</view>
+
+</view>
+
+
+
+<van-tabs active="{{ active }}" bind:click="changeDate" >
+  <van-tab  wx:for="{{workday}}" wx:key="index" title="{{item.name}}" data-date="{{item.val}}">
+  </van-tab>
+</van-tabs>
+<view class="buy-what">
+
+    <view wx:for="{{twork}}" wx:key="index" class="buy-what-item-tinfo">
+        <view class="te-info" wx:if="{{item.tinfo!=undefined  && item.nav==undefined}}">
+        <view class="te-content">{{tname}}师</view>
+          <view class="te-content">{{item.tinfo.name}}</view>
+          <!-- <view class="te-content">{{item.tinfo.gender==1?'男':'女'}}</view> -->
+          <view class="te-content">{{"级别："+item.tinfo.average}}</view>
+          <view class="te-content-rate">
+            <van-rate
+              readonly
+              value="{{ item.tinfo.score }}"
+              size="{{ 6 }}"
+              allow-half
+              color="#FFCB3C"
+              void-color="#eee"
+              void-icon="star"
+            />
+          </view>
+        </view>
+    <view class="no-info" wx:if="{{item.tinfo==undefined && item.nav==undefined}}" class="te-info te-no-info">
+无{{tname}}师
+      </view>
+      <view class="no-info" wx:if="{{item.nav}}"></view>
+
+  <view wx:for="{{item.bunksList}}" wx:key="index" wx:for-item="sitem" class="bunks">
+  <view wx:if="{{item.nav}}" class="buy-what-item-it">{{sitem.timebegin}}</view>
+  <view wx:if="{{sitem.state!=1 && item.nav==undefined}}" class="work_no">{{'已被预定'}}</view>
+  <view  wx:if="{{sitem.state==1 && item.nav==undefined}}" class="work_{{sitem.on==1?'on':'off'}}" bindtap="createsort" data-timebegin="{{sitem.timebegin}}" data-timeend="{{sitem.timeend}}" data-starttime="{{sitem.starttime}}" data-one="{{item.bed}}" data-name="{{item.tinfo.name}}" data-two="{{index}}" data-sort="{{sitem.sort}}" data-charge="{{item.tinfo.price}}" data-id="{{sitem._id}}" data-technicianid="{{sitem.technicianid}}" >{{'¥'+item.tinfo.price/100}}<span wx:if="{{sitem.on!=0}}" class="icon"><icon type="success" color="orange" /></span></view>
+  
+</view>
+  </view>
+
+  
+</view>
+<view class="te-main">
+<view class="te-title">{{tname}}师（{{tinfo.length}}）</view>
+<view class="te-center">
+<view class="work" wx:for="{{tinfo}}" wx:key="index">
+  <view class="workte-info" bindtap="gototinfo" data-id="{{item.id}}">
+    <view class="workte-i"><image src="{{item.images[0].url}}"></image></view>
+    <view class="workte-n">{{item.name}} {{item.gender==1?'男':'女'}}</view>
+    <view class="workte-r">
+<van-rate
+  readonly
+  value="{{ item.score }}"
+  size="{{ 6 }}"
+  allow-half
+  color="#FFCB3C"
+  void-color="#eee"
+  void-icon="star"
+  bind:change="onChange"
+/>
+    </view>
+    <view class="workte-w">从业: {{item.working}}年</view>
+    <view class="workte-s" wx:if="{{deposit}}">{{item.speciality}}</view>
+    <view class="workte-e">用户留言</view>
+    
+  </view>
+</view>
+</view>
+</view>
+
+
+
+
+
+<van-submit-bar
+  price="{{ allprice }}"
+  button-text="提交订单"
+  bind:submit="onClickButton"
+  tip="{{ tipshow }}"
+  wx:if="{{tipshow}}"
+>
+  <view slot="tip">
+    
+    
+    <view class="buy-what-head">
+      <view class="tleft">已选时</view>
+      <view class="tright" bindtap="clearorder">清空</view>
+    </view>
+    <view class="buy-what-body">
+      <view wx:for="{{work}}" wx:key="index" class="buy-what-list">
+      <view bindtap="clearOrdersort" data-charge="{{item.charge}}" data-one="{{item.one}}" data-two="{{item.two}}" data-id="{{item.id}}">{{item.timebegin}}--{{item.timeend}}</view>
+        
+      </view>
+
+    </view>
+    <view class="buy-what-footer"></view>
+  </view>
+</van-submit-bar>

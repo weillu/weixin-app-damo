@@ -1,0 +1,10 @@
+{
+  "navigationBarTitleText": "订单支付",
+  "usingComponents": {
+    "van-submit-bar": "/vant-weapp/dist/submit-bar/index",
+    "van-dialog": "/vant-weapp/dist/dialog/index",
+    "van-icon": "/vant-weapp/dist/icon/index",
+    "van-tabbar": "/vant-weapp/dist/tabbar/index",
+    "van-tabbar-item": "/vant-weapp/dist/tabbar-item/index"
+  }
+}

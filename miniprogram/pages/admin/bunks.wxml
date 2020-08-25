@@ -1,0 +1,36 @@
+<wxs src="../../utils/dm.wxs" module="dm" />
+<wxs src="./gn.wxs" module="gn" />
+<van-tabbar active="admin" bind:change="navbtn">
+  <van-tabbar-item name="admin/index" icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item name="admin/orders" wx:if="{{admin.orders}}" icon="friends-o">订单管理</van-tabbar-item>
+  <van-tabbar-item name="admin/fund" wx:if="{{admin.fund}}"  icon="search">充值管理</van-tabbar-item>
+  <van-tabbar-item name="admin/store" wx:if="{{admin.store}}" icon="friends-o">门店管理</van-tabbar-item>
+</van-tabbar>
+
+
+<view class="version-item">
+  <van-cell title="添加床位"  is-link bind:click="addbunks"  />
+</view>
+
+
+
+
+<van-swipe-cell wx:for="{{version}}" wx:key="{{item}}" right-width="{{ 80 }}" bind:close="swipeClose">
+  <van-cell-group>
+    <van-cell title="{{'第'+item.bed+'号'}}"  />
+  </van-cell-group>
+  <view type="primary" slot="right">
+      <van-button type="danger" class="right120" data-id="{{item._id}}" bind:click="deldialog" >删除</van-button>
+  </view>
+</van-swipe-cell>
+
+
+<van-dialog
+  use-slot
+  title="删除床位"
+  show="{{ dialogshow }}"
+  show-cancel-button
+  bind:close="dialogClose"
+  bind:confirm="delinfo"
+>
+</van-dialog>

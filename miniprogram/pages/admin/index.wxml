@@ -1,0 +1,47 @@
+<wxs src="../../utils/dm.wxs" module="dm" />
+
+<van-cell
+  is-link
+  title="订单管理"
+  wx:if="{{admin.orders}}"
+  link-type="navigateTo"
+  url="/pages/admin/orders"
+/>
+<van-cell
+  is-link
+  title="充值管理"
+  wx:if="{{admin.fund}}"
+  link-type="navigateTo"
+  url="/pages/admin/fund"
+/>
+
+
+<van-cell
+  is-link
+  title="店面管理"
+  wx:if="{{admin.store}}"
+  link-type="navigateTo"
+  url="/pages/admin/store"
+/>
+<van-cell
+  is-link
+  title="员工管理"
+  wx:if="{{admin.technician}}"
+  link-type="navigateTo"
+  url="/pages/admin/technicians"
+/>
+<van-cell
+  is-link
+  title="用户管理"
+  wx:if="{{admin.users}}"
+  link-type="navigateTo"
+  url="/pages/admin/users"
+/>
+<van-cell
+  is-link
+  title="版本管理"
+  wx:if="{{admin.version}}"
+  link-type="navigateTo"
+  url="/pages/admin/version"
+/>
+

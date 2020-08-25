@@ -1,0 +1,4 @@
+{
+  "usingComponents": {"van-rate": "/vant-weapp/dist/rate/index"},
+  "backgroundColor": "#F6F6F6"
+}

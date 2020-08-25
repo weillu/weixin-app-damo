@@ -1,0 +1,26 @@
+<van-tabbar active="share/index" bind:change="navbtn">
+  <van-tabbar-item name="subscribe/subscribe">预约</van-tabbar-item>
+  <van-tabbar-item name="share/index">分享</van-tabbar-item>
+  <van-tabbar-item name="my/my" >我的</van-tabbar-item>
+</van-tabbar>
+
+
+<view class="title">
+    <span>分享美好的减压给亲朋好友</span>
+    <span>您将获得5折的权利！</span>
+</view>
+<view class="img">
+    <image src="/images/c.png"></image>
+</view>
+    
+<view class="info">
+  <span>活动说明</span>
+  <span>1.分享此活动至朋友圈或群里，朋友点击后TA将获得一张5折券。</span>
+  <span>2.如果朋友使用了这张5折券，您将自动获得一张5折券</span>
+  <span>3.后期如果您的朋友累计消费满5次，您将再一次自动获得一张5折券</span>
+</view>
+<view class="btn">
+<button type="warn" class="button" open-type="share">
+          去分享赚券
+        </button>
+</view>

@@ -1,0 +1,66 @@
+<van-tabbar active="on" bind:change="navbtn">
+  <van-tabbar-item name="subscribe/subscribe">预约</van-tabbar-item>
+  <van-tabbar-item name="share/index">分享</van-tabbar-item>
+  <van-tabbar-item name="my/my" >我的</van-tabbar-item>
+</van-tabbar>
+
+<view class="weui-panel weui-panel_access">
+
+<view class="title">
+<view class="date"><span class="d1">{{orderdate}}</span>        {{orderweek}}</view>
+
+
+</view>
+<wxs src="../pay-result/index.wxs" module="index" />
+
+
+<view>
+    <!-- 订单查询 -->
+    <view class="weui-form-preview">
+    
+     <view wx:for="{{order.work}}" wx:key="index" class="buy-what-list">
+        <span class="l0"></span>
+        <span class="l1">{{item.one}}号位</span>
+        <span class="l2">{{item.timebegin}}-{{item.timeend}}</span>
+        <span class="l3">{{index.transform(item.charge)}}</span>
+      </view>
+    </view>
+
+    <view wx:if="{{order.trade_state !='PAYMENT'}}" class="fee">
+      <view class="fee1">费用结算明细</view>
+      <view class="fee2" wx:if="{{order.trade_state ==='PAYMENT' && coupons.length!=0}}"><span class="left">券</span>  <span class="right"> {{coupons[0].name+'x'+coupons.length}} {{index.transform(coupons_fee)}}</span></view>
+      <view class="fee3" wx:if="{{order.trade_state ==='PAYMENT' && deposit}}"><span class="left">账户余额抵扣</span> <span class="right">{{index.transform(damo_fee)}}</span></view>
+      <view class="fee4">
+    <span class="left">总费用</span><span class="right">{{index.transform(total_fee)}}</span>
+    </view>
+    <view class="fee5">
+    <span class="left">现金支付金额</span><span class="right">{{index.transform(actual_payment)}}</span>
+    </view>
+    </view>
+  
+</view>
+<view>
+    <!-- 订单查询 -->
+    <view class="weui-form-preview">
+
+        <view 
+          class="button blue"
+          bindtap="comment"
+        >
+          评价
+        </view>
+
+        
+    </view>
+    
+
+    
+
+</view>
+
+
+
+        
+                    
+        </view>
+

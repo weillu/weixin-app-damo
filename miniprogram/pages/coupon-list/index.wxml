@@ -1,0 +1,38 @@
+<van-tabbar active="my/my" bind:change="navbtn">
+  <van-tabbar-item name="subscribe/subscribe">预约</van-tabbar-item>
+  <van-tabbar-item name="share/index">分享</van-tabbar-item>
+  <van-tabbar-item name="my/my" >我的</van-tabbar-item>
+</van-tabbar>
+
+<van-tabs active="1" swipeable="true" sticky="true" bind:change="onChange">
+  <van-tab title="未使用" name="1">
+      <view wx:for="{{coupona}}" wx:key="index" class="coupons">
+          <view wx:if="{{item.state==1}}" class="coupon_list">
+          <span class="name">{{item.name}}</span>
+          <span class="coupon_name">达摩新式减压按摩</span>
+          <span class="sdate">有效期：{{item.sdate}}至{{item.edate}}</span>
+          <span class="content">{{item.content}}</span>
+          </view>
+      </view>
+  </van-tab>
+  <van-tab title="已使用" name="2">
+    <view wx:for="{{couponb}}" wx:key="i" class="coupons">
+          <view wx:if="{{item.state==2}}" class="coupon_list coupon_list2">
+          <span class="name">{{item.name}}</span>
+          <span class="coupon_name">达摩新式减压按摩</span>
+          <span class="sdate">有效期：{{item.sdate}}至{{item.edate}}</span>
+          <span class="content">{{item.content}}</span>
+          </view>
+      </view>
+  </van-tab>
+  <van-tab title="已过期" name="0">
+      <view wx:for="{{couponc}}" wx:key="t" class="coupons">
+          <view wx:if="{{item.state==0}}" class="coupon_list coupon_list3">
+          <span class="name">{{item.name}}</span>
+          <span class="coupon_name">达摩新式减压按摩</span>
+          <span class="sdate">有效期：{{item.sdate}}至{{item.edate}}</span>
+          <span class="content">{{item.content}}</span>
+          </view>
+      </view>
+  </van-tab>
+</van-tabs>

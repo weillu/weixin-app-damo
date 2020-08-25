@@ -1,0 +1,57 @@
+<wxs module="dateUtil" src="../../utils/dateTime.wxs"></wxs>
+<view class="page-section page-section-spacing swiper" wx:if="{{deposit}}">
+      <swiper indicator-dots="true"
+        autoplay="true" interval="2000" duration="500">
+        <block wx:for="{{techincian.images}}" wx:key="*this" wx:for-item="sitem"  >
+          <swiper-item>
+            <view class="swiper-item "> <image class="img" src="{{sitem.url}}"></image></view>
+          </swiper-item>
+        </block>
+      </swiper>
+</view>
+<view class="t-info">
+    <view class="t-name">{{techincian.name}}</view>
+    <view class="t-s"><van-icon name="location-o" />从业{{techincian.working}}年</view>
+    <view class="t-s" wx:if="{{deposit}}">擅长：{{techincian.speciality}}</view>
+</view>
+
+<view class="content-top" wx:if="{{deposit}}">
+  <view class="total" >用户点评（{{total}}）</view>
+  <view class="comment-score">
+      <van-rate
+              readonly
+              value="{{ techincian.score }}"
+              size="{{ 6 }}"
+              allow-half
+              color="#FFCB3C"
+              void-color="#eee"
+              void-icon="star"
+            />
+             {{techincian.score}}分
+      </view>
+</view>
+<view class="item" wx:for="{{comments}}" wx:key="index" wx:for-item="item" wx:if="{{deposit}}">
+  <view class="item_left">
+    <image src="{{item.avatarUrl}}"></image>
+  </view>
+  <view class="item_right">
+    <view class="item_top">
+        <view class="top_left">
+          {{item.nickName}}
+          <van-rate
+              readonly
+              value="{{ item.score }}"
+              size="{{ 6 }}"
+              allow-half
+              color="#FFCB3C"
+              void-color="#eee"
+              void-icon="star"
+            />
+        </view>
+        <view class="top_right">
+          <view class="item_time">{{dateUtil.dateFormat(item.addtime,'YYYY-MM-dd')}}</view>
+        </view>
+    </view>
+    <view class="item_content">{{item.content}}</view>
+  </view>
+</view>

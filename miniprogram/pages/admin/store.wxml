@@ -1,0 +1,164 @@
+<wxs src="../../utils/dm.wxs" module="dm" />
+<van-tabbar active="admin/store" bind:change="navbtn">
+  <van-tabbar-item name="admin/index" icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item name="admin/orders" wx:if="{{admin.orders}}" icon="friends-o">订单管理</van-tabbar-item>
+  <van-tabbar-item name="admin/fund" wx:if="{{admin.fund}}"  icon="search">充值管理</van-tabbar-item>
+  <van-tabbar-item name="admin/store" wx:if="{{admin.store}}" icon="friends-o">门店管理</van-tabbar-item>
+</van-tabbar>
+
+<van-search
+  value="{{ Svalue }}"
+  placeholder="请输入店名或电话"
+  bind:change="onChangeSearch"
+  bind:search="onSearch"
+  bind:cancel="onCancel"
+/>
+
+<view class="version-item">
+  <van-cell title="添加门店"  data-name="达摩减压" data-images="{{[]}}" data-grade="1" data-bunks="1" data-owner="10:00-24:00" is-link bind:click="showPopup"  />
+</view>
+
+
+
+<view wx:for="{{ndata}}" wx:key="{{item}}" class="version-item">
+  <van-cell title="{{item.id+'号店：'+item.name +',电话：'+ item.phone}}" data-phone="{{item.phone}}" data-sid="{{item._id}}" data-id="{{item.id}}"  data-bunks="{{item.bunks}}"
+  data-city="{{item.city}}" data-county="{{item.county}}" data-district="{{item.district}}"  data-name="{{item.name}}" data-address="{{item.address}}"  data-grade="{{item.grade}}" data-images="{{item.images}}" data-owner="{{item.owner}}" data-province="{{item.province}}" data-position="{{item.position}}" data-bunks="{{item.bunks}}"  is-link bind:click="showPopup" />
+</view>
+
+<van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 100%"
+  bind:close="onClose">
+  <view class="pop_title">
+    修改{{ editdata.name }}信息
+  </view>
+
+  
+<van-cell-group>
+  <van-cell
+  wx:if="{{editdata.sid!=undefined}}"
+  is-link
+  title="床位管理"
+  link-type="navigateTo"
+  url="/pages/admin/bunks?id={{editdata.id}}"
+/>
+<van-cell
+wx:if="{{editdata.sid!=undefined}}"
+  is-link
+  title="店员管理"
+  link-type="navigateTo"
+  url="/pages/admin/storet?id={{editdata.id}}"
+/>
+  <van-field
+    value="{{ editdata.name }}"
+    clearable
+    label="门店名称"
+    placeholder="请输入门店名称"
+    bind:change="onChange1"
+  />
+  <van-field
+    value="{{ editdata.phone }}"
+    clearable
+    label="联系电话"
+    placeholder="请输入联系电话"
+    bind:change="onChange2"
+  />
+ <view class="itemline">
+    <view class="line-left">状态</view>
+    <view class="line-right">
+       <van-stepper value="{{ editdata.state }}" step="1" min="1" max="10" bind:change="onChange11" /> 1:营业;2:停业;3:关闭
+    </view>
+  </view> 
+<view class="itemline">
+    <view class="line-left">级别</view>
+    <view class="line-right">
+      <van-stepper value="{{ editdata.grade }}" step="1" min="1" max="10" bind:change="onChange3" />
+    </view>
+  </view>
+<view class="itemline" >
+    <view class="line-left">床位数</view>
+    <view class="line-right">
+      <van-stepper value="{{ editdata.bunks }}" step="1" min="1" max="10" bind:change="onChange8" />
+    </view>
+  </view>
+  <van-field
+    value="{{ editdata.owner }}"
+    clearable
+    label="营业时间"
+    placeholder="请输入营业时间"
+    bind:change="onChange10"
+  />
+  <van-field
+    value="{{ editdata.province }}"
+    clearable
+    label="省份"
+    placeholder="请输入省份"
+    bind:change="onChange4"
+  />
+  <van-field
+    value="{{ editdata.city }}"
+    clearable
+    label="市"
+    placeholder="请输入市"
+    bind:change="onChange5"
+  />
+<van-field
+    value="{{ editdata.district }}"
+    clearable
+    label="区"
+    placeholder="请输入区"
+    bind:change="onChange7"
+  />
+  <van-field
+    value="{{ editdata.county }}"
+    clearable
+    label="县"
+    placeholder="请输入县"
+    bind:change="onChange6"
+  />
+  <view class="version-item">
+  <van-cell title="地址：{{ editdata.address }}"   is-link bind:click="chooseLocation"  />
+</view>
+  <view class="itemline">
+    <view class="line-left">轮播图片</view>
+    <view class="line-right">
+      <van-uploader
+      name="image"
+      file-list="{{ images }}"
+      max-count="9"
+      multiple="true"
+      capture="['album', 'camera']"
+      bind:after-read="afterRead"
+      bind:delete="delImg"
+    />
+    </view>
+  </view>
+
+</van-cell-group>
+
+<van-swipe-cell id="swipe-cell" right-width="{{ 120 }}" async-close bind:close="swipeClose">
+  <van-cell-group>
+    <view class="pop_btn">
+      <van-button type="primary" bind:click="saveinfo" class="right20">保存</van-button>
+      <van-button type="default" bind:click="onClose" class="right120">取消</van-button>
+    </view>
+  </van-cell-group>
+  <view type="primary" slot="right" wx:if="{{editdata.sid!=undefined}}">
+    <view class="pop_btn1">
+      <van-button type="danger" class="right120">删除</van-button>
+    </view>
+  </view>
+</van-swipe-cell>
+
+</van-popup>
+<van-dialog
+  use-slot
+  title="删除门店"
+  show="{{ dialogshow }}"
+  show-cancel-button
+  bind:close="dialogClose"
+  bind:confirm="delinfo"
+>
+</van-dialog>

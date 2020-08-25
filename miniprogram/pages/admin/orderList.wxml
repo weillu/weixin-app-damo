@@ -1,0 +1,178 @@
+<wxs src="../../utils/dm.wxs" module="dm" />
+<wxs module="dateUtil" src="../../utils/dateTime.wxs"></wxs>
+<wxs src="../pay-result/index.wxs" module="index" />
+<wxs src="../pay-order/status.wxs" module="status" />
+<wxs src="./gn.wxs" module="gn" />
+<van-tabbar active="admin/orders" bind:change="navbtn">
+  <van-tabbar-item name="admin/index" icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item name="admin/orders" wx:if="{{admin.orders}}" icon="friends-o">订单管理</van-tabbar-item>
+  <van-tabbar-item name="admin/fund" wx:if="{{admin.fund}}"  icon="search">充值管理</van-tabbar-item>
+  <van-tabbar-item name="admin/store" wx:if="{{admin.store}}" icon="friends-o">门店管理</van-tabbar-item>
+</van-tabbar>
+
+
+<van-row gutter="20">
+  <van-col span="8">
+    <van-dropdown-menu>
+      <van-dropdown-item value="{{ status }}" options="{{ option1 }}" bind:change="onChanget" />
+      <van-dropdown-item value="{{ type }}" options="{{ option2 }}" bind:change="onChanget0" />
+    </van-dropdown-menu>
+  </van-col>
+  <van-col span="16">
+      <van-search
+        value="{{ Svalue }}"
+        placeholder="请选择左侧查询内容后输入"
+        bind:change="onChangeSearch"
+        bind:search="onSearch"
+        bind:cancel="onCancel"
+       />
+  </van-col>
+</van-row>
+
+
+
+
+ <van-swipe-cell wx:for="{{orders}}" wx:key="{{item}}" left-width="{{ 80 }}"  right-width="{{ 80 }}" bind:close="swipeClose" class="order-item">
+<view type="primary" slot="left">
+      <van-button type="danger" class="right120" data-item="{{item}}" data-out_trade_no="{{item.out_trade_no}}"  bind:click="showPopup" >查看</van-button>
+  </view>
+<van-panel  use-footer-slot >
+        <view class="item-center" >
+          <view class="item">
+            <text>订单号： </text>
+            <text class="text right20">{{item.out_trade_no}}</text>
+            <text>状态： </text>
+            <text class="text">{{status.transform(item.status)}}</text>
+          </view>
+          <view class="item">
+            <text>客户：</text>
+            <text class="text right20">{{item.name}}</text>
+            <text>电话：</text>
+            <text class="text">{{item.phoneNumber}}</text>
+          </view>
+          <view class="item">
+            <text>店ID： </text>
+            <text class="text">{{item.storeid}}</text>
+            <text>预约时间：</text>
+            <text class="text right20">{{dateUtil.dateFormat(item.starttime,'YYYY-MM-dd hh:mm')}}--{{item.work[item.work.length-1].timeend}}</text>
+          </view>
+        </view>
+</van-panel>
+<view type="primary" slot="right" wx:if="{{item.status==1 && item.status==5 && item.status==6}}">
+      <van-button size="small" data-order="{{item.out_trade_no}}" data-index="{{index}}"   data-out_trade_no="{{item.out_trade_no}}" data-status="{{item.status}}" bind:click="refund">取消订单</van-button>
+  </view>
+</van-swipe-cell>
+
+
+
+<van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 100%"
+  bind:close="onClose">
+  <view class="pop_title">
+    订单查看
+  </view>
+<van-cell-group>
+
+  <view class="itemline">
+    <view class="line-left">订单号</view>
+    <view class="line-right">
+      {{tempdata.out_trade_no}}
+    </view>
+  </view>
+
+  <view class="itemline"  wx:if="{{tempdata.status!=undefined}}">
+    <view class="line-left">订单状态</view>
+    <view class="line-right">
+      {{status.transform(tempdata.status)}}
+    </view>
+  </view>
+  <view class="itemline">
+    <view class="line-left">预订时间</view>
+    <view class="line-right">
+      <view wx:for="{{tempdata.work}}" wx:key="{{item}}">
+          {{item.name}}  {{item.one+1}} {{tempdata.date}} {{item.timebegin}}--{{item.timeend}}
+      </view>
+    </view>
+  </view>
+  <view class="itemline" wx:if="{{tempdata.name!=undefined}}">
+    <view class="line-left">姓名</view>
+    <view class="line-right">
+      {{tempdata.name}}
+    </view>
+  </view>
+  <view class="itemline" wx:if="{{tempdata.phoneNumber!=undefined}}">
+    <view class="line-left">联系电话</view>
+    <view class="line-right">
+      {{tempdata.phoneNumber}}
+    </view>
+  </view>
+  <view class="itemline"  wx:if="{{tempdata.total_fee!=undefined}}">
+    <view class="line-left">订单全部金额</view>
+    <view class="line-right">
+    {{index.transform(tempdata.total_fee)}}
+    </view>
+  </view>
+  <view class="itemline"  wx:if="{{tempdata.actual_payment!=undefined}}">
+    <view class="line-left">支付现金</view>
+    <view class="line-right">
+      {{index.transform(tempdata.actual_payment)}}
+    </view>
+  </view>
+  <view class="itemline"  wx:if="{{tempdata.damo_fee!=undefined}}">
+    <view class="line-left">充值抵扣支付</view>
+    <view class="line-right">
+    {{index.transform(tempdata.damo_fee)}}
+    </view>
+  </view>
+  <view class="itemline"  wx:if="{{tempdata.coupons_fee!=undefined}}">
+    <view class="line-left">折扣</view>
+    <view class="line-right">
+      {{index.transform(tempdata.coupons_fee)}}
+    </view>
+  </view>
+  
+  <view class="itemline"  wx:if="{{tempdata.coupons_fee!=undefined}}">
+    <view class="line-left">折扣卷</view>
+    <view class="line-right">
+      {{tempdata.coupon.length}}张
+      <view wx:for="{{tempdata.coupon}}" wx:key="{{item}}"  wx:if="{{tempdata.coupons_fee!=undefined}}">
+        <view>
+          {{item.name}} {{item.type}}
+        </view>
+      </view>
+    </view>
+  </view>
+  
+  <view class="itemline"  wx:if="{{tempdata.addtime!=undefined}}">
+    <view class="line-left">添加时间</view>
+    <view class="line-right">
+      {{dateUtil.dateFormat(tempdata.addtime,'YYYY-MM-dd hh:mm')}}
+    </view>
+  </view>
+  <view class="itemline" wx:if="{{tempdata.edittime!=undefined}}">
+    <view class="line-left">修改时间</view>
+    <view class="line-right">
+    {{dateUtil.dateFormat(tempdata.edittime,'YYYY-MM-dd hh:mm')}}
+    </view>
+  </view>
+  <view class="itemline" wx:if="{{tempdata.trade_state_desc!=undefined}}">
+    <view class="line-left">订单备注</view>
+    <view class="line-right">
+      {{tempdata.trade_state_desc}}
+    </view>
+  </view>
+
+
+</van-cell-group>
+
+
+<view class="pop_btn">
+    <van-button type="primary"  wx:if="{{tempdata.status==1 && tempdata.status==5 && tempdata.status==6}}"  data-out_trade_no="{{tempdata.out_trade_no}}" class="right20" bind:click="refund">退款</van-button>
+    <van-button type="default" bind:click="onClose">返回</van-button>
+</view>
+
+</van-popup>
+

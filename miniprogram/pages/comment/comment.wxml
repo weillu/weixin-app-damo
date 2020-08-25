@@ -1,0 +1,40 @@
+
+  <!-- 评价 -->
+  <view class="comment-container">
+
+
+
+<van-uploader
+  name="image"
+  file-list="{{ images }}"
+  max-count="9"
+  multiple="true"
+  capture="['album', 'camera']"
+  bind:after-read="afterRead"
+  bind:delete="delImg"
+/>
+
+<van-cell-group>
+  <van-field
+    value="{{ content }}"
+    label="评价"
+    type="textarea"
+    placeholder="写一些评价吧"
+    autosize
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+</van-cell-group>
+
+  <van-cell-group> 
+    <van-rate color="#FFCB3C" value="{{ score }}" count="{{ 6 }}" bind:change="onScoreChange" />
+    
+  </van-cell-group>
+  <!-- <van-cell-group> 
+    <van-button type="warning" bindtap="uploadImg">上传图片</van-button>
+    <view>
+      <image class="comment-img" src="{{item.url}}" wx:for="{{images}}" wx:key="{{index}}"></image>
+    </view>
+  </van-cell-group>   -->
+    <van-button size="large" type="danger" bindtap="submit">提交评价</van-button>
+</view>

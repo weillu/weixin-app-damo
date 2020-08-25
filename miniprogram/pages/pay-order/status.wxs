@@ -1,0 +1,22 @@
+
+var transform = function (num) {
+  switch (num){
+      case 0:
+      return '未支付';
+      case 1:
+      return '预约成功';
+      case 2:
+      return '已取消';
+      case 3: 
+      return '正在退款';
+      case 4: 
+      return '已退款';
+      case 5:
+      return '已结束';
+      case 6:
+      return '已结束未评论';  
+
+  }
+}
+
+module.exports.transform = transform;

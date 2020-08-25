@@ -1,0 +1,41 @@
+.title {
+  height: 220rpx;
+  padding-top: 130rpx;
+  font-size: 40rpx;
+  color: #565E61;
+  line-height: 60rpx;
+  text-align: center
+}
+.title span{
+  display: block;
+  width: 100%;
+}
+.img {
+  height: 320rpx;
+  text-align: center
+}
+.img image {
+  width: 544rpx;
+  height: 232rpx;
+}
+.info {
+  width: 600rpx;
+  height: 360rpx;
+  margin: 0 auto;
+  font-size: 28rpx;
+  color: #565E61;
+  line-height: 40rpx;
+}
+.info span {
+  display:block;
+}
+.btn {
+  width: 680rpx;
+  height: 200rpx;
+  margin: 0 auto;
+  
+}
+.btn .button {
+  border-radius: 60rpx;
+  background-color:#4e92df;
+}

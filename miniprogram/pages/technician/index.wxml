@@ -1,0 +1,38 @@
+<wxs src="../../utils/dm.wxs" module="dm" />
+<van-tabbar active="technician/index" bind:change="navbtn">
+  <van-tabbar-item name="technician/index" icon="home-o">绩效</van-tabbar-item>
+  <van-tabbar-item name="technician/work" icon="search">上班</van-tabbar-item>
+  <van-tabbar-item name="technician/rest" icon="friends-o">休息</van-tabbar-item>
+</van-tabbar>
+
+<van-cell
+  is-link
+  title="收入:{{dm.transform(damo_cash)}}"
+  link-type="navigateTo"
+  url="/pages/technician/cash"
+/>                     
+<van-cell
+  is-link
+  title="今天的订单（{{today_total}}）"
+  link-type="navigateTo"
+  url="/pages/technician/orders?technicianid={{technicianid}}&date={{today}}"
+/>  
+<van-cell
+  is-link
+  title="明日的订单（{{tomorrow_total}}）"
+  link-type="navigateTo"
+  url="/pages/technician/orders?technicianid={{technicianid}}&date={{tomorrow}}"
+/>                    
+<van-cell
+  is-link
+  title="全部订单"
+  link-type="navigateTo"
+  url="/pages/technician/orders?technicianid={{technicianid}}&date="
+/>
+<van-cell
+  is-link
+  title="我的评价"
+  link-type="navigateTo"
+  url="/pages/tInfo/tInfo?id={{technicianid}}"
+/>
+        

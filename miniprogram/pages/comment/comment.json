@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-uploader": "/vant-weapp/dist/uploader/index",
+    "van-field": "/vant-weapp/dist/field/index",
+    "van-rate": "/vant-weapp/dist/rate/index"
+  }
+}

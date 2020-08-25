@@ -1,0 +1,78 @@
+<wxs src="../../utils/dm.wxs" module="dm" />
+<wxs src="./gn.wxs" module="gn" />
+<van-tabbar active="admin" bind:change="navbtn">
+  <van-tabbar-item name="admin/index" icon="home-o">首页</van-tabbar-item>
+  <van-tabbar-item name="admin/users"  icon="friends-o">订单管理</van-tabbar-item>
+  <van-tabbar-item name="admin/store"  icon="friends-o">门店管理</van-tabbar-item>
+</van-tabbar>
+
+<view class="version-item">
+  <van-cell title="添加店员" data-storeid="{{id}}"  is-link bind:click="showPopup"  />
+</view>
+
+
+
+
+<van-swipe-cell wx:for="{{version}}" wx:key="{{item}}" left-width="{{ 80 }}" right-width="{{ 80 }}" bind:close="swipeClose">
+  <view type="primary" slot="left">
+      <van-button type="danger" class="right120" data-sid="{{item._id}}" data-id="{{item._id}}" data-name="{{item.name}}" data-bed="{{item.bed}}" data-bedid="{{item.bedid}}" data-storeid="{{item.storeid}}" bind:click="showPopup" >修改</van-button>
+  </view>
+  <van-cell-group>
+    <van-cell title="{{item.bed+'号床；姓名：'+item.name}}" value="{{'电话：'+item.phone}}"  />
+  </van-cell-group>
+  <view type="primary" slot="right">
+      <van-button type="danger" class="right120" data-id="{{item._id}}" bind:click="deldialog" >删除</van-button>
+  </view>
+</van-swipe-cell>
+
+
+<van-dialog
+  use-slot
+  title="删除床位"
+  show="{{ dialogshow }}"
+  show-cancel-button
+  bind:close="dialogClose"
+  bind:confirm="delinfo"
+>
+</van-dialog>
+
+<van-popup
+  show="{{ show }}"
+  closeable
+  position="bottom"
+  custom-style="height: 100%"
+  bind:close="onClose">
+  <view class="pop_title">
+    {{ tempdata.nickname }} 信息修改
+  </view>
+<van-cell-group>
+
+  <view class="itemline" wx:if="{{tempdata.sid==undefined}}">
+    <view class="line-left">员工</view>
+    <view class="line-right">
+      <van-dropdown-menu>
+        <van-dropdown-item value="{{ ont }}" options="{{ tvalues }}" bind:change="onChanget" />
+      </van-dropdown-menu>
+    </view>
+  </view>
+  <van-cell title="员工" value="{{tempdata.name}}" wx:if="{{tempdata.sid!=undefined}}" />
+  <view class="itemline">
+    <view class="line-left">床位</view>
+    <view class="line-right">
+      <van-dropdown-menu>
+        <van-dropdown-item value="{{ onbunk }}" options="{{ tbunks }}" bind:change="onChangebunks" />
+      </van-dropdown-menu>
+    </view>
+  </view>
+
+
+</van-cell-group>
+
+
+<view class="pop_btn">
+    <van-button type="primary" bind:click="saveinfo" class="right20">保存</van-button>
+    <van-button type="default" bind:click="onClose">取消</van-button>
+</view>
+
+</van-popup>
+

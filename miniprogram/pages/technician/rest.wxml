@@ -1,0 +1,59 @@
+<van-tabbar active="technician/rest" bind:change="navbtn">
+  <van-tabbar-item name="technician/index" icon="home-o">订单</van-tabbar-item>
+  <van-tabbar-item name="technician/work" icon="search">上班</van-tabbar-item>
+  <van-tabbar-item name="technician/rest" icon="friends-o">休息</van-tabbar-item>
+</van-tabbar>
+
+
+
+<van-tabs active="{{ active }}" bind:click="changeDate" >
+  <van-tab  wx:for="{{workday}}" wx:key="index" title="{{item.name}}" data-date="{{item.val}}">
+  </van-tab>
+</van-tabs>
+<view class="buy-what" wx:if="{{twork.length}}">
+
+   
+
+  <view wx:for="{{twork}}" wx:key="index" class="bunks">
+  <view  wx:if="{{item.state==1}}" data-timebegin="{{item.timebegin}}" data-timeend="{{item.timeend}}" data-one="{{index}}" class="work_{{item.on==1?'on':'off'}}" bindtap="createsort" data-id="{{item._id}}">{{item.timebegin+'-'+item.timeend}}<span wx:if="{{item.on==1}}" class="icon"><icon type="success" color="orange" /></span></view>
+  <view wx:if="{{item.state==2}}" class="work_no2">{{item.timebegin+'-'+item.timeend+'(已订)'}}</view>
+  <view wx:if="{{item.state==3}}" class="work_no">{{item.timebegin+'-'+item.timeend}}</view>
+  <view wx:if="{{item.state==6}}" class="work_no6">{{item.timebegin+'-'+item.timeend+'(休息)'}}</view>
+  
+  
+</view>
+
+  
+</view>
+
+<view class="no-order" wx:if="{{!twork.length}}">
+你没有上班打卡
+</view>
+
+
+
+
+
+<van-submit-bar
+  button-text="休息"
+  bind:submit="onClickButton"
+  tip="{{ tipshow }}"
+  wx:if="{{tipshow}}"
+>
+  <view slot="tip">
+    
+    
+    <view class="buy-what-head">
+      <view class="tleft">已选时</view>
+      <view class="tright" bindtap="clearorder">清空</view>
+    </view>
+    <view class="buy-what-body">
+      <view wx:for="{{work}}" wx:key="index" class="buy-what-list">
+      <view bindtap="clearOrdersort" data-charge="{{item.charge}}" data-one="{{item.one}}" data-two="{{item.two}}" data-id="{{item.id}}">{{item.timebegin}}--{{item.timeend}}</view>
+        
+      </view>
+
+    </view>
+    <view class="buy-what-footer"></view>
+  </view>
+</van-submit-bar>

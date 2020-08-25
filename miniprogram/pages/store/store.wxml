@@ -1,0 +1,25 @@
+
+
+<view>
+<view wx:for="{{stores}}" wx:key="index">
+
+
+<view class="page-section page-section-spacing swiper">
+      <swiper indicator-dots="true"
+        autoplay="false" interval="2000" duration="500">
+        <block wx:for="{{item.images}}" wx:key="*this" wx:for-item="sitem"  >
+          <swiper-item>
+            <view class="swiper-item "> <image class="img" src="{{sitem}}"></image></view>
+          </swiper-item>
+        </block>
+      </swiper>
+</view>
+
+<view class="shop">
+<view>{{item.name}}</view>
+<view>{{item.address}}</view>
+<view>{{item.owner}}</view>
+<view>{{item.phone}}</view>
+</view>
+</view>
+</view>

@@ -1,0 +1,69 @@
+.coupon_on {
+border: 2rpx solid #FF8B8B;
+}
+.coupon_off {
+border: 2rpx solid #FFEDED;
+}
+.topinfo {
+  background: #FFEDBA;
+  border: 2rpx solid #FDCE95;
+  height: 68rpx;
+  width: 100%;
+  font-size: 24rpx;
+  line-height: 34rpx;
+  color: rgba(92,76,69,0.90);
+  padding:10rpx 20rpx 10rpx 20rpx;
+}
+.coupons {
+  height: 226rpx;
+}
+.coupon_list {
+  width: 686rpx;
+  height: 200rpx;
+  margin: 0 auto;
+  background: #FFFFFF;
+  border: 2rpx solid #FFEDED;
+}
+.coupon_list span {
+  display: inline-block;
+  float: left;
+}
+.name {
+  font-size: 100rpx;
+  color: #FFFFFF;
+  background: #FF9E52;
+  text-align: center;
+  height: 200rpx;
+  line-height: 200rpx;
+  width: 240rpx;
+}
+.coupon_name {
+  font-size: 36rpx;
+  height: 80rpx;
+  line-height: 80rpx;
+  color: rgba(51,51,51,0.90);
+  padding-left:14rpx;
+}
+.sdate {
+  font-size: 24rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  color: rgba(51,51,51,0.90);
+  padding-left:14rpx;
+  width: 432rpx;
+  border-bottom: 1rpx solid #FFEDED;
+}
+
+.content {
+  height: 50rpx;
+  line-height: 50rpx;
+  font-size: 20rpx;
+  color: rgba(135,135,135,0.90);
+  padding-left:14rpx;
+}
+.coupon_list2 .name {
+  background: #666666;
+}
+.coupon_list3 .name {
+  background: #bec0c2;
+}

@@ -1,0 +1,19 @@
+<van-tabbar active="my/my" bind:change="navbtn">
+  <van-tabbar-item name="subscribe/subscribe">预约</van-tabbar-item>
+  <van-tabbar-item name="share/index">分享</van-tabbar-item>
+  <van-tabbar-item name="my/my" >我的</van-tabbar-item>
+</van-tabbar>
+
+
+<view class="top">
+<icon type="success" size="53" color="#07C160" />
+</view>
+<view class="ok">订单支付成功</view>
+<view class="fee">订单金额：{{index.transform(total_fee)}}</view>
+<button 
+          class="button color"
+          bindtap="goto"
+        >
+          查看订单
+        </button>
+<wxs src="./index.wxs" module="index" />
