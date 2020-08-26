@@ -9,3 +9,9 @@ josn  云库表
 cloudfunctions   云程序源文件
 miniprogram  小程序源文件
 
+
+
+======================================
+云支付需要有密钥
+
+/cloudfunctions/pay/config/apiclient_cert.p12
